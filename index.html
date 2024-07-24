@@ -23,16 +23,28 @@ body, html {
   background-size: cover;
 }
 
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: img src="images/HOME_001.mp4";
+.bgimg-1 video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
   min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  background: url('images/HOME_001.mp4') no-repeat;
+  background-size: cover;
 }
 
 /* Second image (Portfolio) */
 .bgimg-2 {
-  background-image: img src="avatar_hat.jpg";
+  background-image: url('avatar_hat.jpg');
   min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Third image (Contact) */
