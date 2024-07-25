@@ -441,7 +441,7 @@ body, html {
           </div>
         </div>
           <input class="w3-input w3-border" type="text" placeholder="Message" required name="message">
-          <button class="w3-button w3-black w3-right w3-section" type="submit">
+          <button id="submitButton" class="w3-button w3-black w3-right w3-section" type="submit">
             <i class="fa fa-paper-plane"></i> SEND MESSAGE
           </button>
      </form>
@@ -501,8 +501,12 @@ function toggleFunction() {
       email: form.email.value,
       message: form.message.value
     };
+
+    var submitButton = document.getElementById("submitButton");
+    submitButton.disabled = true;
+    submitButton.style.backgroundColor = "grey";
 	  
-    fetch("https://script.google.com/macros/s/AKfycbwP3r5soma57Qruq5NLsdx1CTi_ox_H_hmkZVMnPxGYyE9k0b2aUiCtbmud-smPK5If/exec", { // 替换为你的Web应用程序URL
+    fetch("https://script.google.com/macros/s/AKfycbwP3r5soma57Qruq5NLsdx1CTi_ox_H_hmkZVMnPxGYyE9k0b2aUiCtbmud-smPK5If/exec", { 
       method: "POST",
       body: JSON.stringify(data)
     })
@@ -510,10 +514,14 @@ function toggleFunction() {
     .then(data => {
       alert("Form submitted successfully");
       form.reset();
+      submitButton.disabled = false;
+      submitButton.style.backgroundColor = "black";
     })
     .catch(error => {
       console.error("Error:", error);
       alert("Form submission failed");
+      submitButton.disabled = false;
+      submitButton.style.backgroundColor = "black";
     });
   });
 </script>
