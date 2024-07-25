@@ -431,7 +431,7 @@ body, html {
       </div>
       <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
 
-      <form id="myForm" action="https://script.google.com/macros/s/AKfycbyhBBOS0f9LdpPE9UXLol99-d5SMlCHXdHUnWjL2839CgBrlO_ZmHCeMTo6jIitYTX3/exec" method="POST">
+      <form id="myForm">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
             <input class="w3-input w3-border" type="text" placeholder="Name" required name="name"> 
@@ -445,7 +445,6 @@ body, html {
             <i class="fa fa-paper-plane"></i> SEND MESSAGE
           </button>
      </form>
-       <div id="formResult"></div>
     </div>
   </div>
 </div>
@@ -493,6 +492,30 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+  document.getElementById("myForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    var form = event.target;
+    var data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+    
+    fetch("YOUR_WEB_APP_URL", { // 替换为你的Web应用程序URL
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(data => {
+      alert("Form submitted successfully");
+      form.reset();
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Form submission failed");
+    });
+  });
 </script>
 
 </body>
