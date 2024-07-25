@@ -501,8 +501,8 @@ function toggleFunction() {
       email: form.email.value,
       message: form.message.value
     };
-    
-    fetch("YOUR_WEB_APP_URL", { // 替换为你的Web应用程序URL
+	  
+    fetch("https://script.google.com/macros/s/AKfycbwP3r5soma57Qruq5NLsdx1CTi_ox_H_hmkZVMnPxGYyE9k0b2aUiCtbmud-smPK5If/exec", { // 替换为你的Web应用程序URL
       method: "POST",
       body: JSON.stringify(data)
     })
